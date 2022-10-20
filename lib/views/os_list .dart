@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_servico/components/os_tile.dart';
-import 'package:ordem_servico/data/dummy_os.dart';
+import 'package:ordem_servico/provider/os.dart';
 import 'package:ordem_servico/routes/app_routes.dart';
+import 'package:provider/provider.dart';
 
 class OsList extends StatelessWidget{
 
     @override
     Widget build(BuildContext context){
 
-        final services = {...DUMMY_OS};
+        final OrdemServices services = Provider.of(context);
 
         return Scaffold(
             appBar: AppBar(
@@ -26,8 +27,8 @@ class OsList extends StatelessWidget{
                 ],
             ),//AppBar
             body: ListView.builder(
-                itemCount: services.length,
-                itemBuilder: (ctx, i) => OsTile(services.values.elementAt(i))
+                itemCount: services.count,
+                itemBuilder: (ctx, i) => OsTile(services.all.elementAt(i))
             )
         );
     }
