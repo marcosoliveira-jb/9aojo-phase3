@@ -8,8 +8,17 @@ class UserForm extends StatelessWidget{
   final _form = GlobalKey<FormState>();
   final Map<String, dynamic> _formData = {};
 
+  void _loadFormData(User user){
+
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final User user = ModalRoute.of<User>(context)?.settings.arguments;
+    
+    _loadFormData(user);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Formulário de Prestador de Serviço'),
